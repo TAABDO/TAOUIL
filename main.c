@@ -3,8 +3,8 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
- int count = 0;
  
+ // struct task ; 
  typedef struct{
 	    int id;
 	    char titre [100];
@@ -12,9 +12,10 @@
 	    char date[11];
 	    char statut [100];
     }Task;
-     Task tk[100]; 
-           // struct task ;
-            
+    //declaration de table
+            int count = 0;
+           Task tk[100]; 
+           
         void Ajouter(){
         	
 		     //apre le client choisx nous fait un choix si le choix == a donc ajouter une fois sinon si le choix == b l'ajout dois affiche plusieur fois
@@ -27,39 +28,74 @@
 	              scanf("%s",tk[count].date);
 	            printf("Enter le Statut [* realise *,* en cours de realise *,* finalise *]:\n");
 	              scanf("%s",tk[count].statut);
-	              
-	                         }
+	              count++;
+	                         };
 			void Ajouterplus() {
-				int i;
 				
-				for(i=0;i<3;i++){
+				int i,n;
+				printf("entere les nomber des tache:\n");
+				scanf("%i",&n);
+				
+				for(i=0;i<n;i++){
 	            printf("Enter le Titre :\n");
-	              scanf("%s",tk[i].titre);
+	              scanf("%s",tk[count].titre);
 	            printf("Enter le Description :\n");
-	              scanf("%s",tk[i].description);
+	              scanf("%s",tk[count].description);
 	            printf("Enter le Deadline (jour/mois/ans)");
-	              scanf("%s",tk[i].date);
+	              scanf("%s",tk[count].date);
 	            printf("Enter le Statut [* a realise *,* en cours de realise *,* finalise *]:\n");
-	              scanf("%s",tk[i].statut);
+	              scanf("%s",tk[count].statut);
+	               count++;
 	                         }
-	};
+	                        
+	                  };
+   void Afficher() {
+                  int i;
+                  printf("Les informations que vous avez entrées sont :\n");
+              for ( i = 0; i < count; i++) {
+                   printf("Tâche %d:\n", i + 1);
+                   printf("Id: %d\n", tk[i].id); // Initialize or increment id when adding tasks
+                   printf("Titre: %s\n", tk[i].titre);
+                   printf("Description: %s\n", tk[i].description);
+                   printf("Deadline: %s\n", tk[i].date);
+                   printf("Statut: %s\n", tk[i].statut);
+                   printf("\n");
+    }
+}
+
+void Modifier(){
+	char choixmod;
+	printf("[a] Modifier la description d'une tâche");
+	printf("[b] Modifier  le statut d’une tâche");
+	printf("[c] Modifier le deadline d’une tâche");
+	scanf("%c",&choixmod);
+    switch(choixmod)
+	{
+		case 'a':
+			
+			break;
+		case 'b':
+			break;
+		case 'c':
+			break;
+	}
 	
-void Afficher (){
-	             int count;
-	     for(count=0;count<3;count++){
-	     	printf("le info que vous enter est :\n");
-		printf("Id: %i \n",tk[count].id);
-		printf("titre: %s\n",tk[count].titre);
-		printf("description: %s\n",tk[count].description);
-		printf("deadline: %s\n",tk[count].date);
-		printf("statut: %s\n",tk[count].statut);	
-		 }
-	    
+	
 };
+//char Supprimer(char titre){
+//	int pos;
+//	pos=-1;
+//	int i;
+//	for (i=0;i<tk.count;i++){
+//		if(strcmp(titre,tk[i].titre))
+//		pos=1;
+//	}
+//	return pos;
+//}
 
 int main() {
 	
-	int choix;
+	int choix ,n;
 	char choixAj,a,b;
 
 	printf("=========================================== \n \t \t");
@@ -71,35 +107,32 @@ int main() {
 			printf("=========================================== \n ");
 
 		printf("[1]Ajouter Une tache \n");
-		printf("[2]Afficher \n");
-		printf("[3]Modifier \n");
-		printf("[4]Supprimer \n");
-		printf("[5]Rechercher  \n");
-		printf("[6]Statistiques \n");
+		printf("[2]Ajouter Une tache \n");
+		printf("[3]Afficher \n");
+		printf("[4]Modifier \n");
+		printf("[5]Supprimer \n");
+		printf("[6]Rechercher  \n");
+		printf("[7]Statistiques \n");
 	    scanf("%i",&choix);
 
 		printf("=========================================== \n");
 
 	switch (choix) {
 		case 1:
-		
-	         
-	         printf("[a]Ajouter Une tache \n");
-		    printf("[b]Ajouter plusieur tache \n");
-		     scanf("%c",&choixAj);
-		     switch(choixAj){
-		     	case 'a':
-		     		Ajouter();
-		     		break;
-		     	case 'b':
-		     			Ajouterplus();
-		     			break;
-			 }
-		    
-	    break;
+		     	Ajouter();
+	        break;
 	    
 	    case 2:
+	    	Ajouterplus();
+	        break;
+	    case 3:
 	    	Afficher();
+	    	break;
+	    case 4:
+	    	Modifier();
+	    break;
+	        case 5:
+//	        Supprimer();
 	    break;
 	    
 	}
