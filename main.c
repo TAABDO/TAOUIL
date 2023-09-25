@@ -56,7 +56,7 @@ void Ajouterplus() {
         scanf("%i", &tk[counter].deadln.mois);
         printf("L'annee : ");
         scanf("%i", &tk[counter].deadln.annee);
-        printf("Entrez le statut en choisissant parmi les options suivantes : \n[a realise] \n[en cours de realise] \n[finalise] : \n");
+        printf("Entrez le statut en choisissant parmi les options suivantes : \n[realise] \n[en cours de realise] \n[finalise] : \n");
         scanf("%s", tk[counter].statut);
         counter++;
         tk[counter].id=counter;
@@ -202,15 +202,15 @@ void Statistiques() {
 
     // Parcourir les tâches pour compter les statuts
     for (i = 0; i < counter; i++) {
-        if (strcmp(tk[i].statut, "realise") == 0) {
+        if (strcmp(tk[i].statut, "finalise") == 0) {
             Count++;
         } else {
             notCount++;
         }
     }
     // Afficher les statistiques
-    printf("Nombre de taches avec le statut 'realise': %d\n", Count);
-    printf("Nombre de taches pas encore realise: %d\n", notCount);
+    printf("Nombre de taches completes: %d\n", Count);
+    printf("Nombre de taches incompletes: %d\n", notCount);
     printf("Nombre total de taches: %d\n", counter);
 }
 int main() {
